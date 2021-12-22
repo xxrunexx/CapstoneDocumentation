@@ -1,0 +1,867 @@
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: Moviein API
+  contact: {}
+host: localhost:8585
+basePath: /
+securityDefinitions: {}
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /account/register:
+    post:
+      summary: /account/register
+      tags:
+        - Account
+      operationId: /account/register
+      deprecated: false
+      produces:
+        - application/json; charset=UTF-8
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/~1account~1registerrequest"
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/~1account~1register"
+          examples:
+            application/json; charset=UTF-8:
+              data:
+                username: pertama
+                password: admin
+                email: rasyid.id3@gmail.com
+              message: Success
+          headers:
+            Date:
+              type: string
+              default: Mon, 29 Nov 2021 15:48:39 GMT
+            Content-Length:
+              type: string
+              default: "102"
+  /account/login:
+    post:
+      summary: /account/login
+      tags:
+        - Account
+      operationId: /account/login
+      deprecated: false
+      produces:
+        - application/json; charset=UTF-8
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/~1account~1loginrequest"
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/~1account~1login"
+          examples:
+            application/json; charset=UTF-8:
+              data:
+                id: 0
+                username: pertama
+                token: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzgyMjI3MDgsIm5hbWUiOiJwZXJ0YW1hIiwidXNlcklkIjowfQ.rR532rwBmY1D69u8PC5eyRX0F9V3MNY0f23psMmYo0w
+              message: Success
+          headers:
+            Date:
+              type: string
+              default: Mon, 29 Nov 2021 15:51:48 GMT
+            Content-Length:
+              type: string
+              default: "213"
+  /account:
+    get:
+      summary: /account
+      tags:
+        - Account
+      operationId: /account
+      deprecated: false
+      produces:
+        - application/json; charset=UTF-8
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/~1account"
+          examples:
+            application/json; charset=UTF-8:
+              data:
+                - username: pertama
+                  password: admin
+                  email: rasyid.id3@gmail.com
+                - username: akunketiga
+                  password: admin
+                  email: ""
+              message: Success
+          headers:
+            Date:
+              type: string
+              default: Mon, 29 Nov 2021 17:42:27 GMT
+            Content-Length:
+              type: string
+              default: "160"
+  /account/1:
+    get:
+      summary: /account/:id
+      tags:
+        - Account
+      operationId: /account/:id
+      deprecated: false
+      produces:
+        - application/json; charset=UTF-8
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/~1account~1%3Aid"
+          examples:
+            application/json; charset=UTF-8:
+              data:
+                username: pertama
+                password: admin
+                email: rasyid.id3@gmail.com
+              message: Success
+          headers:
+            Date:
+              type: string
+              default: Mon, 29 Nov 2021 15:59:59 GMT
+            Content-Length:
+              type: string
+              default: "102"
+  /:
+    get:
+      summary: /movie/:title
+      tags:
+        - Movie
+      operationId: /movie/:title
+      deprecated: false
+      produces:
+        - application/json; charset=UTF-8
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/NewRequest"
+          examples:
+            application/json; charset=UTF-8:
+              data:
+                id: 249070
+                title: "Hitman: Agent 47"
+                imdb_id: 0
+                original_language: en
+                price: 0
+                popularity: 83.99
+                status: ""
+                overview: >-
+                  An assassin teams up with a woman to help her find her father
+                  and uncover the mysteries of her ancestry.
+                voteAverage: 5.8
+                voteCount: 2426
+              message: Success
+          headers:
+            Date:
+              type: string
+              default: Wed, 01 Dec 2021 16:56:38 GMT
+            Content-Length:
+              type: string
+              default: "301"
+    post:
+      summary: /watchlist
+      tags:
+        - Watchlist
+      operationId: /watchlist
+      deprecated: false
+      produces:
+        - application/json; charset=UTF-8
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/~1watchlistrequest"
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/~1watchlist"
+          examples:
+            application/json; charset=UTF-8:
+              data:
+                account_id: 3
+                movie_id: 5212
+              message: Success
+          headers:
+            Date:
+              type: string
+              default: Wed, 01 Dec 2021 21:02:10 GMT
+            Content-Length:
+              type: string
+              default: "62"
+  /movie/popular:
+    get:
+      summary: /movie/popular
+      tags:
+        - Movie
+      operationId: /movie/popular
+      deprecated: false
+      produces:
+        - application/json; charset=UTF-8
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/~1movie~1popular"
+          examples:
+            application/json; charset=UTF-8:
+              data:
+                id: 580489
+                title: "Venom: Let There Be Carnage"
+                imdb_id: 0
+                original_language: en
+                price: 0
+                popularity: 14703.522
+                status: ""
+                overview: >-
+                  After finding a host body in investigative reporter Eddie
+                  Brock, the alien symbiote must face a new enemy, Carnage, the
+                  alter ego of serial killer Cletus Kasady.
+                voteAverage: 7.2
+                voteCount: 3643
+              message: Success
+          headers:
+            Date:
+              type: string
+              default: Wed, 01 Dec 2021 17:52:52 GMT
+            Content-Length:
+              type: string
+              default: "373"
+  /movie/ongoing:
+    get:
+      summary: /movie/ongoing
+      tags:
+        - Movie
+      operationId: /movie/ongoing
+      deprecated: false
+      produces:
+        - application/json; charset=UTF-8
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/~1movie~1ongoing"
+          examples:
+            application/json; charset=UTF-8:
+              data:
+                id: 580489
+                title: "Venom: Let There Be Carnage"
+                imdb_id: 0
+                original_language: en
+                price: 0
+                popularity: 14703.522
+                status: ""
+                overview: >-
+                  After finding a host body in investigative reporter Eddie
+                  Brock, the alien symbiote must face a new enemy, Carnage, the
+                  alter ego of serial killer Cletus Kasady.
+                voteAverage: 7.2
+                voteCount: 3643
+              message: Success
+          headers:
+            Date:
+              type: string
+              default: Wed, 01 Dec 2021 18:12:24 GMT
+            Content-Length:
+              type: string
+              default: "373"
+  /transaction:
+    post:
+      summary: /transaction
+      tags:
+        - Transaction
+      operationId: /transaction
+      deprecated: false
+      produces:
+        - application/json; charset=UTF-8
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/~1transactionrequest"
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/~1transaction"
+          examples:
+            application/json; charset=UTF-8:
+              data:
+                account_id: 3
+                payment_method: 9
+              message: Success
+          headers:
+            Date:
+              type: string
+              default: Wed, 01 Dec 2021 23:57:04 GMT
+            Content-Length:
+              type: string
+              default: "65"
+  /watchlist:
+    get:
+      summary: /watchlist/:account_id
+      tags:
+        - Watchlist
+      operationId: /watchlist/:account_id
+      deprecated: false
+      produces:
+        - application/json; charset=UTF-8
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/~1account~1%3Aaccount_id~1watchlist"
+          examples:
+            application/json; charset=UTF-8:
+              data:
+                - id: 1
+                  account_id: 3
+                  movie_id: 0
+                - id: 2
+                  account_id: 3
+                  movie_id: 0
+                - id: 3
+                  account_id: 3
+                  movie_id: 1
+                - id: 4
+                  account_id: 3
+                  movie_id: 500
+                - id: 5
+                  account_id: 3
+                  movie_id: 5212
+              message: Success
+          headers:
+            Date:
+              type: string
+              default: Wed, 01 Dec 2021 21:13:06 GMT
+            Content-Length:
+              type: string
+              default: "221"
+  /watchlist/1:
+    delete:
+      summary: /watchlist/:id
+      tags:
+        - Watchlist
+      operationId: /watchlist/:id
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+definitions:
+  /account/registerrequest:
+    title: /account/registerrequest
+    example:
+      username: pertama
+      password: admin
+      email: rasyid.id3@gmail.com
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+      email:
+        type: string
+    required:
+      - username
+      - password
+      - email
+  /account/register:
+    title: /account/register
+    example:
+      data:
+        username: pertama
+        password: admin
+        email: rasyid.id3@gmail.com
+      message: Success
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/Data"
+      message:
+        type: string
+    required:
+      - data
+      - message
+  Data:
+    title: Data
+    example:
+      username: pertama
+      password: admin
+      email: rasyid.id3@gmail.com
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+      email:
+        type: string
+    required:
+      - username
+      - password
+      - email
+  /account/loginrequest:
+    title: /account/loginrequest
+    example:
+      username: pertama
+      password: admin
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+    required:
+      - username
+      - password
+  /account/login:
+    title: /account/login
+    example:
+      data:
+        id: 0
+        username: pertama
+        token: >-
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzgyMjI3MDgsIm5hbWUiOiJwZXJ0YW1hIiwidXNlcklkIjowfQ.rR532rwBmY1D69u8PC5eyRX0F9V3MNY0f23psMmYo0w
+      message: Success
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/Data1"
+      message:
+        type: string
+    required:
+      - data
+      - message
+  Data1:
+    title: Data1
+    example:
+      id: 0
+      username: pertama
+      token: >-
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzgyMjI3MDgsIm5hbWUiOiJwZXJ0YW1hIiwidXNlcklkIjowfQ.rR532rwBmY1D69u8PC5eyRX0F9V3MNY0f23psMmYo0w
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      username:
+        type: string
+      token:
+        type: string
+    required:
+      - id
+      - username
+      - token
+  /account:
+    title: /account
+    example:
+      data:
+        - username: pertama
+          password: admin
+          email: rasyid.id3@gmail.com
+        - username: akunketiga
+          password: admin
+          email: ""
+      message: Success
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/Data"
+      message:
+        type: string
+    required:
+      - data
+      - message
+  /account/:id:
+    title: /account/:id
+    example:
+      data:
+        username: pertama
+        password: admin
+        email: rasyid.id3@gmail.com
+      message: Success
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/Data"
+      message:
+        type: string
+    required:
+      - data
+      - message
+  NewRequest:
+    title: NewRequest
+    example:
+      data:
+        id: 249070
+        title: "Hitman: Agent 47"
+        imdb_id: 0
+        original_language: en
+        price: 0
+        popularity: 83.99
+        status: ""
+        overview: >-
+          An assassin teams up with a woman to help her find her father and
+          uncover the mysteries of her ancestry.
+        voteAverage: 5.8
+        voteCount: 2426
+      message: Success
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/Data4"
+      message:
+        type: string
+    required:
+      - data
+      - message
+  Data4:
+    title: Data4
+    example:
+      id: 249070
+      title: "Hitman: Agent 47"
+      imdb_id: 0
+      original_language: en
+      price: 0
+      popularity: 83.99
+      status: ""
+      overview: >-
+        An assassin teams up with a woman to help her find her father and
+        uncover the mysteries of her ancestry.
+      voteAverage: 5.8
+      voteCount: 2426
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      title:
+        type: string
+      imdb_id:
+        type: integer
+        format: int32
+      original_language:
+        type: string
+      price:
+        type: integer
+        format: int32
+      popularity:
+        type: number
+        format: double
+      status:
+        type: string
+      overview:
+        type: string
+      voteAverage:
+        type: number
+        format: double
+      voteCount:
+        type: integer
+        format: int32
+    required:
+      - id
+      - title
+      - imdb_id
+      - original_language
+      - price
+      - popularity
+      - status
+      - overview
+      - voteAverage
+      - voteCount
+  /movie/popular:
+    title: /movie/popular
+    example:
+      data:
+        id: 580489
+        title: "Venom: Let There Be Carnage"
+        imdb_id: 0
+        original_language: en
+        price: 0
+        popularity: 14703.522
+        status: ""
+        overview: >-
+          After finding a host body in investigative reporter Eddie Brock, the
+          alien symbiote must face a new enemy, Carnage, the alter ego of serial
+          killer Cletus Kasady.
+        voteAverage: 7.2
+        voteCount: 3643
+      message: Success
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/Data4"
+      message:
+        type: string
+    required:
+      - data
+      - message
+  /movie/ongoing:
+    title: /movie/ongoing
+    example:
+      data:
+        id: 580489
+        title: "Venom: Let There Be Carnage"
+        imdb_id: 0
+        original_language: en
+        price: 0
+        popularity: 14703.522
+        status: ""
+        overview: >-
+          After finding a host body in investigative reporter Eddie Brock, the
+          alien symbiote must face a new enemy, Carnage, the alter ego of serial
+          killer Cletus Kasady.
+        voteAverage: 7.2
+        voteCount: 3643
+      message: Success
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/Data4"
+      message:
+        type: string
+    required:
+      - data
+      - message
+  /transactionrequest:
+    title: /transactionrequest
+    example:
+      account_id: 3
+      payment_method: 1
+    type: object
+    properties:
+      account_id:
+        type: integer
+        format: int32
+      payment_method:
+        type: integer
+        format: int32
+    required:
+      - account_id
+      - payment_method
+  /transaction:
+    title: /transaction
+    example:
+      data:
+        account_id: 3
+        payment_method: 9
+      message: Success
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/Data7"
+      message:
+        type: string
+    required:
+      - data
+      - message
+  Data7:
+    title: Data7
+    example:
+      account_id: 3
+      payment_method: 9
+    type: object
+    properties:
+      account_id:
+        type: integer
+        format: int32
+      payment_method:
+        type: integer
+        format: int32
+    required:
+      - account_id
+      - payment_method
+  /transaction/:account_id:
+    title: /transaction/:account_id
+    example:
+      data:
+        - id: 1
+          account_id: 3
+          price: 0
+          payment_method_id: 1
+        - id: 2
+          account_id: 3
+          price: 0
+          payment_method_id: 9
+      message: success
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/Data8"
+      message:
+        type: string
+    required:
+      - data
+      - message
+  Data8:
+    title: Data8
+    example:
+      id: 1
+      account_id: 3
+      price: 0
+      payment_method_id: 1
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      account_id:
+        type: integer
+        format: int32
+      price:
+        type: integer
+        format: int32
+      payment_method_id:
+        type: integer
+        format: int32
+    required:
+      - id
+      - account_id
+      - price
+      - payment_method_id
+  /account/:account_id/watchlist:
+    title: /account/:account_id/watchlist
+    example:
+      data:
+        - id: 1
+          account_id: 3
+          movie_id: 0
+        - id: 2
+          account_id: 3
+          movie_id: 0
+        - id: 3
+          account_id: 3
+          movie_id: 1
+        - id: 4
+          account_id: 3
+          movie_id: 500
+        - id: 5
+          account_id: 3
+          movie_id: 5212
+      message: Success
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/Data9"
+      message:
+        type: string
+    required:
+      - data
+      - message
+  Data9:
+    title: Data9
+    example:
+      id: 1
+      account_id: 3
+      movie_id: 0
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      account_id:
+        type: integer
+        format: int32
+      movie_id:
+        type: integer
+        format: int32
+    required:
+      - id
+      - account_id
+      - movie_id
+  /watchlistrequest:
+    title: /watchlistrequest
+    example:
+      account_id: 3
+      movie_id: 1
+    type: object
+    properties:
+      account_id:
+        type: integer
+        format: int32
+      movie_id:
+        type: integer
+        format: int32
+    required:
+      - account_id
+      - movie_id
+  /watchlist:
+    title: /watchlist
+    example:
+      data:
+        account_id: 3
+        movie_id: 5212
+      message: Success
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/Data10"
+      message:
+        type: string
+    required:
+      - data
+      - message
+  Data10:
+    title: Data10
+    example:
+      account_id: 3
+      movie_id: 5212
+    type: object
+    properties:
+      account_id:
+        type: integer
+        format: int32
+      movie_id:
+        type: integer
+        format: int32
+    required:
+      - account_id
+      - movie_id
+tags:
+  - name: Account
+  - name: Movie
+  - name: Transaction
+  - name: Watchlist
